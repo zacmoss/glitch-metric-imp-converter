@@ -62,6 +62,7 @@ function ConvertHandler() {
   
   this.getString = function(initNum, initUnit, returnNum, returnUnit) {
     var result;
+    // spellOutUnit will be in here to make string
     
     return result;
   };
