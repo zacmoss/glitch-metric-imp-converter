@@ -38,13 +38,35 @@ const galToL = function(num) {
   return num * 3.78541;
 }
 
+const checkUnit = function(firstVal) {
+  let x = false;
+  switch(firstVal) {
+    case "mi":
+        x = true
+        break;
+    case "km":
+        code block
+        break;
+    default:
+        code block
+}
+  
+}
+
 app.get('/api/convert', function(req, res) {
   let x = req.query.input;
-  if (parseInt(x[0]).isNaN) {
+  
+  let y = parseInt(x[0]);
+  //res.json({data: y});
+  
+  
+  if (x[0] === "m") {
     res.json({data: "first place is not number"});
   } else {
     res.json({data: "first place is number"});
   }
+  
+  
   //res.json({data: x[0]});
   //x = galToL(x).toFixed(2);
   //res.json({data: x});
