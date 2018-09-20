@@ -62,7 +62,7 @@ const checkUnit = function(unit) {
         input.pass = true
         input.unit = "gal"
         break;
-    case "L":
+    case "l":
         input.pass = true
         input.unit = "L"
         break;
@@ -141,6 +141,7 @@ app.get('/api/convert', function(req, res) {
     input.unit = x;
   }
   
+  input.unit = input.unit.toLowerCase();
   checkUnit(input.unit);
   
   if (input.pass) {
@@ -153,7 +154,8 @@ app.get('/api/convert', function(req, res) {
               string: string
              });
   } else {
-    res.json({error: "Please input correct unit"});
+    //res.json({error: "Please input correct unit"});
+    res.json({data: "invalid unit"});
   }
   
   
