@@ -104,14 +104,36 @@ const convertFunc = function(num, unit) {
 
 app.get('/api/convert', function(req, res) {
   let x = req.query.input;
+  
+  // splits x into array split by numbers and letters
+  let myArray = x.split(/([0-9]+)/);
+  console.log(myArray);
+  
+  if (myArray[0] === "") {
+    // number there
+    console.log('works');
+  } else {
+    // no number
+    checkUnit(x)
+    if (input.pass) {
+      // 1 placed as default in input.num bc no num provided
+      input.num = 1;
+      let convertedVal = convertFunc(input.num, input.unit);
+      res.json({data: convertedVal});
+    } else {
+      res.json({eerror: "Please input correct unit"});
+    }
+  }
   let y = checkUnit(x);  
   
+  /*
   if (input.pass) {
     let convertedVal = convertFunc(input.num, input.unit);
     res.json({data: convertedVal});
   } else {
     res.json({data: "first place is number"});
   }
+  */
   
   
   
