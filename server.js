@@ -33,6 +33,9 @@ app.route('/')
     res.sendFile(process.cwd() + '/views/index.html');
   });
 
+//converter functions
+
+
 app.get('/api/convert', function(req, res) {
   let x = req.query.input;
   res.json({data: x});
