@@ -40,10 +40,10 @@ const galToL = function(num) {
 
 let input = {
   "pass": false,
+  "num": undefined,
   "unit": undefined
 }
 const checkUnit = function(unit) {
-  //let x = false;
   switch(unit) {
     case "mi":
         input.pass = true
@@ -72,7 +72,34 @@ const checkUnit = function(unit) {
     default:
         input.pass = false;
   }
-  //return x;
+}
+
+const convertFunc = function(num, unit) {
+  let x = undefined
+  switch(unit) {
+    case "mi":
+        // mi to km
+        break;
+    case "km":
+        // km to mi
+        break;
+    case "gal":
+        // gal to L
+        x = galToL(num);
+        break;
+    case "L":
+        // L to gal
+        break;
+    case "lbs":
+        // lbs to kg
+        break;
+    case "kg":
+        // kg to lbs
+        break;
+    default:
+        x = undefined;
+  }
+  return x;
 }
 
 app.get('/api/convert', function(req, res) {
@@ -80,7 +107,8 @@ app.get('/api/convert', function(req, res) {
   let y = checkUnit(x);  
   
   if (input.pass) {
-    res.json({data: input.unit});
+    let convertedVal = convertFunc(input.num, input.unit);
+    res.json({data: convertedVal});
   } else {
     res.json({data: "first place is number"});
   }
