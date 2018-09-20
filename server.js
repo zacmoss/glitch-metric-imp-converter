@@ -34,11 +34,16 @@ app.route('/')
   });
 
 //converter functions
-
+const galToL = function(num) {
+  return num * 3.78541;
+}
 
 app.get('/api/convert', function(req, res) {
   let x = req.query.input;
-  res.json({data: x});
+  if (x[0]
+  res.json({data: x[0]});
+  //x = galToL(x).toFixed(2);
+  //res.json({data: x});
 });
   
 
