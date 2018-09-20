@@ -28,7 +28,26 @@ function ConvertHandler() {
 
   this.spellOutUnit = function(unit) {
     var result;
-    
+    switch(unit.toLowerCase()) {
+      case 'kg':
+        result = 'kilograms';
+        break;
+      case 'lbs':
+        result = 'pounds';
+        break;
+      case 'mi':
+        result = 'miles';
+        break;      
+      case 'km':
+        result = 'kilometers';
+        break;      
+      case 'gal':
+        result = 'gallons';
+        break;      
+      case 'l':
+        result = 'liters';
+        break;      
+    }
     return result;
   };
   

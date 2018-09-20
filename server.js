@@ -33,14 +33,11 @@ app.route('/')
     res.sendFile(process.cwd() + '/views/index.html');
   });
 
-//converter functions
+
+
+
+
 /*
-const galToL = function(num) {
-  return num * 3.78541;
-}
-const lToGal = function(num) {
-}
-*/
 
 let input = {
   "pass": false,
@@ -179,7 +176,14 @@ app.get('/api/convert', function(req, res) {
   //x = galToL(x).toFixed(2);
   //res.json({data: x});
 });
-  
+ 
+
+*/
+
+
+
+
+ 
 
 //For FCC testing purposes
 fccTestingRoutes(app);
