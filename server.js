@@ -109,6 +109,7 @@ const convertFunc = function(num, unit) {
   return x;
 }
 
+
 app.get('/api/convert', function(req, res) {
   let x = req.query.input;
   
@@ -118,10 +119,9 @@ app.get('/api/convert', function(req, res) {
   
   if (myArray[0] === "") {
     // number there
-    // remove unit from string what's left is number
     if (myArray[2] === ".") {
-      
       input.unit = myArray[4];
+      // remove unit from string what's left is number
       let index = x.indexOf(input.unit);
       input.num = x.slice(0, index);
       //console.log(input.num);
@@ -129,7 +129,8 @@ app.get('/api/convert', function(req, res) {
     
     input.num = myArray[1];
     input.unit = myArray[2];
-    console.log(input.num, input.unit);
+    //console.log(input.num, input.unit);
+      /*
     let convertedVal = convertFunc(input.num, input.unit).toFixed(2);
     let string = input.num + ` ` + input.unit + " to " + convertedVal + ` ` + input.to
     //res.json({data: convertedVal});
@@ -139,21 +140,42 @@ app.get('/api/convert', function(req, res) {
               returnUnit: input.to,
               string: string
              });
+             */
     }
   } else {
     // no number
+    /*
     checkUnit(x)
     if (input.pass) {
       // 1 placed as default in input.num bc no num provided
       input.num = 1;
-      let convertedVal = convertFunc(input.num, input.unit);
-      res.json({data: convertedVal});
+      input.unit = x;
+      //let convertedVal = convertFunc(input.num, input.unit);
+      //res.json({data: convertedVal});
     } else {
       res.json({error: "Please input correct unit"});
     }
+    */
+    input.num = 1;
+    input.unit = x;
   }
   
-  let y = checkUnit(x);  
+  checkUnit(input.unit);
+  if (input.pass) {
+    let convertedVal = convertFunc(input.num, input.unit).toFixed(2);
+    let string = input.num + ` ` + input.unit + " to " + convertedVal + ` ` + input.to
+    //res.json({data: convertedVal});
+    res.json({initNum: input.num,
+              initUnit: input.unit,
+              returnNum: convertedVal,
+              returnUnit: input.to,
+              string: string
+             });
+  } else {
+    res.json({error: "Please input correct unit"});
+  }
+  
+  //let y = checkUnit(x);  
   
   /*
   if (input.pass) {
