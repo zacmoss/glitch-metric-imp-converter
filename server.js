@@ -38,33 +38,53 @@ const galToL = function(num) {
   return num * 3.78541;
 }
 
-const checkUnit = function(firstVal) {
-  let x = false;
-  switch(firstVal) {
+let input = {
+  "pass": false,
+  "unit": undefined
+}
+const checkUnit = function(unit) {
+  //let x = false;
+  switch(unit) {
     case "mi":
-        x = true
+        input.pass = true
+        input.unit = "mi"
         break;
     case "km":
-        code block
+        input.pass = true
+        input.unit = "km"
+        break;
+    case "gal":
+        input.pass = true
+        input.unit = "gal"
+        break;
+    case "L":
+        input.pass = true
+        input.unit = "L"
+        break;
+    case "lbs":
+        input.pass = true
+        input.unit = "lbs"
+        break;
+    case "kg":
+        input.pass = true
+        input.unit = "kg"
         break;
     default:
-        code block
-}
-  
+        input.pass = false;
+  }
+  //return x;
 }
 
 app.get('/api/convert', function(req, res) {
   let x = req.query.input;
+  let y = checkUnit(x);  
   
-  let y = parseInt(x[0]);
-  //res.json({data: y});
-  
-  
-  if (x[0] === "m") {
-    res.json({data: "first place is not number"});
+  if (input.pass) {
+    res.json({data: input.unit});
   } else {
     res.json({data: "first place is number"});
   }
+  
   
   
   //res.json({data: x[0]});
