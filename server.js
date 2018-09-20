@@ -141,7 +141,7 @@ app.get('/api/convert', function(req, res) {
     input.unit = x;
   }
   
-  input.unit = input.unit.toLowerCase();
+  input.unit = input.unit.toLowerCase(); // converts unit to lowercase
   checkUnit(input.unit);
   
   if (input.pass) {
@@ -155,8 +155,10 @@ app.get('/api/convert', function(req, res) {
              });
   } else {
     //res.json({error: "Please input correct unit"});
-    res.json({data: "invalid unit"});
-  }
+    es.json({ata: "invalid unit"});
+ 
+    //res.json.data = "invalid unit";
+    //res.json("invalid unit"); }
   
   
   
@@ -197,3 +199,4 @@ app.listen(process.env.PORT || 3000, function () {
 });
 
 module.exports = app; //for testing
+//
