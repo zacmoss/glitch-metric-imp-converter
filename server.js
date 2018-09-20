@@ -126,15 +126,24 @@ app.get('/api/convert', function(req, res) {
   // splits x into array split by numbers and letters
   let myArray = x.split(/([0-9]+)/);
   //console.log(myArray);
+  console.log(2.4 / 3);
   
   if (myArray[0] === "") { // number there
-    if (myArray[2] === ".") {
+    if (myArray[2] === "." && myArray[4] === "/" && myArray[6] === ".") {
+      input.unit = myArray[8];
+      let equation = x.split("/");
+      input.num = equation[0] / equation[1];
+    } else if (myArray[2] === "." && myArray[4] === "/") {
+      input.unit = myArray[6];
+      let equation = x.split("/");
+      input.num = equation[0] / equation[1];
+    } else if (myArray[2] === ".") {
       input.unit = myArray[4];
       let index = x.indexOf(input.unit); // remove unit from string what's left is number
       input.num = x.slice(0, index);
     } else if (myArray[2] === "/") {
       input.num = myArray[1] / myArray[3];
-      input.unit = 
+      input.unit = myArray[4];
     } else {
     input.num = myArray[1];
     input.unit = myArray[2];
