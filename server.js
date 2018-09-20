@@ -132,6 +132,9 @@ app.get('/api/convert', function(req, res) {
       input.unit = myArray[4];
       let index = x.indexOf(input.unit); // remove unit from string what's left is number
       input.num = x.slice(0, index);
+    } else if (myArray[2] === "/") {
+      input.num = myArray[1] / myArray[3];
+      input.unit = 
     } else {
     input.num = myArray[1];
     input.unit = myArray[2];
@@ -145,7 +148,7 @@ app.get('/api/convert', function(req, res) {
   checkUnit(input.unit);
   
   if (input.pass) {
-    let convertedVal = convertFunc(input.num, input.unit).toFixed(2);
+    let convertedVal = convertFunc(input.num, input.unit).toFixed(5);
     let string = input.num + ` ` + input.unit + " to " + convertedVal + ` ` + input.to
     res.json({initNum: input.num,
               initUnit: input.unit,
@@ -154,11 +157,9 @@ app.get('/api/convert', function(req, res) {
               string: string
              });
   } else {
-    //res.json({error: "Please input correct unit"});
-    es.json({ata: "invalid unit"});
- 
-    //res.json.data = "invalid unit";
-    //res.json("invalid unit"); }
+    res.json({data: "invalid unit"});
+    //es.json({ata: "invalid unit"});
+  }
   
   
   
