@@ -114,17 +114,19 @@ app.get('/api/convert', function(req, res) {
   
   // splits x into array split by numbers and letters
   let myArray = x.split(/([0-9]+)/);
-  console.log(myArray);
+  //console.log(myArray);
   
   if (myArray[0] === "") {
     // number there
+    // remove unit from string what's left is number
     if (myArray[2] === ".") {
-      let join = myArray.splice(1, 3);
-      join = join.join();
-      console.log(join);
+      
       input.unit = myArray[4];
-    }
-    /*
+      let index = x.indexOf(input.unit);
+      input.num = x.slice(0, index);
+      //console.log(input.num);
+    } else {
+    
     input.num = myArray[1];
     input.unit = myArray[2];
     console.log(input.num, input.unit);
@@ -137,7 +139,7 @@ app.get('/api/convert', function(req, res) {
               returnUnit: input.to,
               string: string
              });
-             */
+    }
   } else {
     // no number
     checkUnit(x)
@@ -150,6 +152,7 @@ app.get('/api/convert', function(req, res) {
       res.json({error: "Please input correct unit"});
     }
   }
+  
   let y = checkUnit(x);  
   
   /*
