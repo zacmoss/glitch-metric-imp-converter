@@ -122,13 +122,13 @@ app.get('/api/convert', function(req, res) {
     input.unit = myArray[2];
     console.log(input.num, input.unit);
     let convertedVal = convertFunc(input.num, input.unit).toFixed(2);
-    let string = "' + input.num + '"
+    let string = input.num + ` ` + input.unit + " to " + convertedVal + ` ` + input.to
     //res.json({data: convertedVal});
     res.json({initNum: input.num,
               initUnit: input.unit,
               returnNum: convertedVal,
               returnUnit: input.to,
-              string: '3.1 miles converts to 5.00002 kilometers'
+              string: string
              });
   } else {
     // no number
