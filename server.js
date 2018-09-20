@@ -41,7 +41,8 @@ const galToL = function(num) {
 let input = {
   "pass": false,
   "num": undefined,
-  "unit": undefined
+  "unit": undefined,
+  "to": undefined
 }
 const checkUnit = function(unit) {
   switch(unit) {
@@ -79,22 +80,28 @@ const convertFunc = function(num, unit) {
   switch(unit) {
     case "mi":
         // mi to km
+        input.to = "km"
         break;
     case "km":
         // km to mi
+        input.to = "mi"
         break;
     case "gal":
         // gal to L
+        input.to = "L"
         x = galToL(num);
         break;
     case "L":
         // L to gal
+        input.to = "gal"
         break;
     case "lbs":
         // lbs to kg
+        input.to = "kg"
         break;
     case "kg":
         // kg to lbs
+        input.to = "lbs"
         break;
     default:
         x = undefined;
@@ -111,7 +118,18 @@ app.get('/api/convert', function(req, res) {
   
   if (myArray[0] === "") {
     // number there
-    console.log('works');
+    input.num = myArray[1];
+    input.unit = myArray[2];
+    console.log(input.num, input.unit);
+    let convertedVal = convertFunc(input.num, input.unit).toFixed(2);
+    let string = "' + input.num + '"
+    //res.json({data: convertedVal});
+    res.json({initNum: input.num,
+              initUnit: input.unit,
+              returnNum: convertedVal,
+              returnUnit: input.to,
+              string: '3.1 miles converts to 5.00002 kilometers'
+             });
   } else {
     // no number
     checkUnit(x)
@@ -121,7 +139,7 @@ app.get('/api/convert', function(req, res) {
       let convertedVal = convertFunc(input.num, input.unit);
       res.json({data: convertedVal});
     } else {
-      res.json({eerror: "Please input correct unit"});
+      res.json({error: "Please input correct unit"});
     }
   }
   let y = checkUnit(x);  
