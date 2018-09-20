@@ -40,8 +40,12 @@ const galToL = function(num) {
 
 app.get('/api/convert', function(req, res) {
   let x = req.query.input;
-  if (x[0]
-  res.json({data: x[0]});
+  if (parseInt(x[0]).isNaN) {
+    res.json({data: "first place is not number"});
+  } else {
+    res.json({data: "first place is number"});
+  }
+  //res.json({data: x[0]});
   //x = galToL(x).toFixed(2);
   //res.json({data: x});
 });
