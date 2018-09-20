@@ -33,10 +33,11 @@ app.route('/')
     res.sendFile(process.cwd() + '/views/index.html');
   });
 
-app.route('/api/convert')
-  .get(function(req, res) {
+app.get('/api/convert', function(req, res) {
+  let x = req.query.input;
+  res.json({data: x});
+});
   
-  });
 
 //For FCC testing purposes
 fccTestingRoutes(app);
