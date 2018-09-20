@@ -34,9 +34,13 @@ app.route('/')
   });
 
 //converter functions
+/*
 const galToL = function(num) {
   return num * 3.78541;
 }
+const lToGal = function(num) {
+}
+*/
 
 let input = {
   "pass": false,
@@ -80,27 +84,33 @@ const convertFunc = function(num, unit) {
   switch(unit) {
     case "mi":
         // mi to km
+        x = num * 1.60934;
         input.to = "km"
         break;
     case "km":
         // km to mi
+        x = num * 0.621371;
         input.to = "mi"
         break;
     case "gal":
         // gal to L
+        x = num * 3.78541;
         input.to = "L"
-        x = galToL(num);
+        //x = galToL(num);
         break;
     case "L":
         // L to gal
+        x = num * 0.264172;
         input.to = "gal"
         break;
     case "lbs":
         // lbs to kg
+        x = num * 0.453592;
         input.to = "kg"
         break;
     case "kg":
         // kg to lbs
+        x = num * 2.20462;
         input.to = "lbs"
         break;
     default:
