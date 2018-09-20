@@ -118,6 +118,13 @@ app.get('/api/convert', function(req, res) {
   
   if (myArray[0] === "") {
     // number there
+    if (myArray[2] === ".") {
+      let join = myArray.splice(1, 3);
+      join = join.join();
+      console.log(join);
+      input.unit = myArray[4];
+    }
+    /*
     input.num = myArray[1];
     input.unit = myArray[2];
     console.log(input.num, input.unit);
@@ -130,6 +137,7 @@ app.get('/api/convert', function(req, res) {
               returnUnit: input.to,
               string: string
              });
+             */
   } else {
     // no number
     checkUnit(x)
