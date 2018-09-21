@@ -72,8 +72,8 @@ function ConvertHandler() {
       unit = myArray[0];
     }
     
-    let check = 
-    if (unit === 'mi' || unit === 'km' || unit === 'lbs' || unit === 'kg' || unit === 'gal' || unit === 'l') {
+    let check = unit.toLowerCase();
+    if (check === 'mi' || check === 'km' || check === 'lbs' || check === 'kg' || check === 'gal' || check === 'l') {
         result = unit;
     } else {
       result = 'invalid unit';
@@ -85,7 +85,7 @@ function ConvertHandler() {
   this.getReturnUnit = function(initUnit) {
     var result;
     let x = initUnit.toLowerCase();
-    console.log('spellOutUnit - ' + x + ' - should be lowercase');
+    //console.log('spellOutUnit - ' + x + ' - should be lowercase');
     switch(x) {
       case 'kg':
         result = 'lbs';
@@ -114,7 +114,7 @@ function ConvertHandler() {
   this.spellOutUnit = function(unit) {
     var result;
     let x = unit.toLowerCase();
-    console.log('spellOutUnit - ' + x + ' - should be lowercase');
+    //console.log('spellOutUnit - ' + x + ' - should be lowercase');
     switch(x) {
     //switch(unit.toLowerCase()) {
       case 'kg':
