@@ -17,6 +17,8 @@ function ConvertHandler() {
     } else if (num.includes('/')) {
       num = num.split('/');
       result = num[0] / num[1];
+    } else if (isNaN(num)) {
+      result = 'invalid number';
     } else {
       result = num;
     }
@@ -27,11 +29,17 @@ function ConvertHandler() {
   
   this.getUnit = function(input) {
     var result;
+    let unit;
     let myArray = input.split(/([0-9]+)/);
     if (myArray[0] === '') {
-      //is number
+      // number at [1]
+      unit = myArray[2].toLowerCase();
+      if (unit === 'mi' || unit === 'km' || unit === 'lbs' || unit === 'kg' || unit === 'gal' || unit === 'l') {
+        result = unit;
+      } else {
+        result = 'invalid unit';
     } else {
-      //is not number
+      // is not number
       // check for appropriate unit
     
     return result;
