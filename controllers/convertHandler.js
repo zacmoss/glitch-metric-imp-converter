@@ -10,6 +10,8 @@ function ConvertHandler() {
   
   this.getNum = function(input) {
     var result;
+    let array = input.split(/[a-zA-Z]+/);
+    let num = array[0]
     
     return result;
   };
@@ -28,7 +30,10 @@ function ConvertHandler() {
 
   this.spellOutUnit = function(unit) {
     var result;
-    switch(unit.toLowerCase()) {
+    let x = unit.toLowerCase();
+    console.log('spellOutUnit - ' + x + ' - should be lowercase');
+    switch(x) {
+    //switch(unit.toLowerCase()) {
       case 'kg':
         result = 'kilograms';
         break;
