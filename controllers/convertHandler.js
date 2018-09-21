@@ -8,6 +8,7 @@
 
 function ConvertHandler() {
   
+  // works if input is string
   this.getNum = function(input) {
     var result;
     let array = input.split(/[a-zA-Z]+/);
@@ -22,11 +23,15 @@ function ConvertHandler() {
     } else {
       result = num;
     }
+    if (result === Infinity) { 
+      result = 'invalid number';
+    }
     //num = num.split('/');
     
     return result;
   };
   
+  // works if input is string
   this.getUnit = function(input) {
     var result;
     let unit;
@@ -34,14 +39,16 @@ function ConvertHandler() {
     if (myArray[0] === '') {
       // number at [1]
       unit = myArray[2].toLowerCase();
-      if (unit === 'mi' || unit === 'km' || unit === 'lbs' || unit === 'kg' || unit === 'gal' || unit === 'l') {
-        result = unit;
-      } else {
-        result = 'invalid unit';
     } else {
       // is not number
       // check for appropriate unit
-    
+      unit = myArray[0].toLowerCase();
+    }
+    if (unit === 'mi' || unit === 'km' || unit === 'lbs' || unit === 'kg' || unit === 'gal' || unit === 'l') {
+        result = unit;
+    } else {
+      result = 'invalid unit';
+    }
     return result;
   };
   
