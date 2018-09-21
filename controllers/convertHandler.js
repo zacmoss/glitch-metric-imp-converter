@@ -40,18 +40,28 @@ function ConvertHandler() {
   };
   
   // works if input is string
+  // [' ', 2, km]
+  //[' ', 2, ., 2, km]
+  //[' ', 2, ., 2, /, 2, km]
+  //[' ', 2, /, 2, ., 2, km]
+  // [' ', 2, ., 2, /, 2, ., 2, km]
   this.getUnit = function(input) {
     var result;
     let unit;
     let myArray = input.split(/([0-9]+)/);
     if (myArray[0] === '') {
       // number at [1]
+      if (myArray[2] === '.' && myArray[4] === '/' && myArray[6] === '.') {
+        unit = myArray[8].toLowerCase();
+      } else if (myArray[2] === '/' && myArray[)
       unit = myArray[2].toLowerCase();
     } else {
       // is not number
       // check for appropriate unit
       unit = myArray[0].toLowerCase();
     }
+    
+    
     if (unit === 'mi' || unit === 'km' || unit === 'lbs' || unit === 'kg' || unit === 'gal' || unit === 'l') {
         result = unit;
     } else {
