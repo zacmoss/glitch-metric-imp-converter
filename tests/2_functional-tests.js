@@ -38,20 +38,20 @@ suite('Functional Tests', function() {
         .get('/api/convert')
         .query({input: '32g'})
         .end(function(err, res){
-          assert.equal(res.status, 400);
-          /*
-          assert.equal(res.body.initNum, 10);
-          assert.equal(res.body.initUnit, 'L');
-          assert.approximately(res.body.returnNum, 2.64172, 0.1);
-          assert.equal(res.body.returnUnit, 'gal');
-          */
+          assert.equal(res.body.error, 'invalid unit');
           done();
         });
         //done();
       });
       
       test('Convert 3/7.2/4kg (invalid number)', function(done) {
-        
+        chai.request(server)
+        .get('/api/convert')
+        .query({input: '3/7.2/4kg'})
+        .end(function(err, res){
+          assert.equal(res.body.error, 'invalid number');
+          done();
+        });
         //done();
       });  
       
