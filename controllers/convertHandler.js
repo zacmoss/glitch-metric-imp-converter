@@ -46,6 +46,8 @@ function ConvertHandler() {
   //[' ', 2, ., 2, /, 2, km]//
   //[' ', 2, /, 2, ., 2, km]//
   // [' ', 2, ., 2, /, 2, ., 2, km]//
+  //3/7.2/4kg
+  // this is hugely incorrect, need to just get the letters and separate from nums
   this.getUnit = function(input) {
     var result;
     let unit;
