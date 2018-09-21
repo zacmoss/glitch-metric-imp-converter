@@ -41,10 +41,11 @@ function ConvertHandler() {
   
   // works if input is string
   // [' ', 2, km]
-  //[' ', 2, ., 2, km]
-  //[' ', 2, ., 2, /, 2, km]
-  //[' ', 2, /, 2, ., 2, km]
-  // [' ', 2, ., 2, /, 2, ., 2, km]
+  //[' ', 2, /, 2, km]
+  //[' ', 2, ., 2, km]//
+  //[' ', 2, ., 2, /, 2, km]//
+  //[' ', 2, /, 2, ., 2, km]//
+  // [' ', 2, ., 2, /, 2, ., 2, km]//
   this.getUnit = function(input) {
     var result;
     let unit;
@@ -52,16 +53,26 @@ function ConvertHandler() {
     if (myArray[0] === '') {
       // number at [1]
       if (myArray[2] === '.' && myArray[4] === '/' && myArray[6] === '.') {
-        unit = myArray[8].toLowerCase();
-      } else if (myArray[2] === '/' && myArray[)
-      unit = myArray[2].toLowerCase();
+        //unit = myArray[8].toLowerCase();
+        unit = myArray[8];
+      } else if (myArray[2] === '/' && myArray[4] === '.') {
+        unit = myArray[6];
+      } else if (myArray[2] === '.' && myArray[4] === '/') {
+        unit = myArray[6];
+      } else if (myArray[2] === '.') {
+        unit = myArray[4];
+      } else if (myArray[2] === '/') {
+        unit = myArray[4];
+      } else {
+        unit = myArray[2];
+      }
     } else {
       // is not number
       // check for appropriate unit
-      unit = myArray[0].toLowerCase();
+      unit = myArray[0];
     }
     
-    
+    let check = 
     if (unit === 'mi' || unit === 'km' || unit === 'lbs' || unit === 'kg' || unit === 'gal' || unit === 'l') {
         result = unit;
     } else {
