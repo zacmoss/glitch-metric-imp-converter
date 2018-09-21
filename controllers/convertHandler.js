@@ -12,6 +12,8 @@ function ConvertHandler() {
     var result;
     let array = input.split(/[a-zA-Z]+/);
     let num = array[0]
+    //if (num.includes('/')) num = num.split('/');
+    num = num.split('/');
     
     return result;
   };
