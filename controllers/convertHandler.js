@@ -17,7 +17,11 @@ function ConvertHandler() {
       result = 1;
     } else if (num.includes('/')) {
       num = num.split('/');
-      result = num[0] / num[1];
+      if (num.length > 2) { // check for double fractions
+        result = 'invalid number';
+      } else {
+        result = num[0] / num[1];
+      }
     } else if (isNaN(num)) {
       result = 'invalid number';
     } else {
@@ -26,7 +30,11 @@ function ConvertHandler() {
     if (result === Infinity) { 
       result = 'invalid number';
     }
+    if (isNaN(result)) {
+      result = 'invalid number';
+    }
     //num = num.split('/');
+    
     
     return result;
   };
