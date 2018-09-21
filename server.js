@@ -155,7 +155,7 @@ app.get('/api/convert', function(req, res) {
   
   input.unit = input.unit.toLowerCase(); // converts unit to lowercase
   checkUnit(input.unit);
-  
+  /*
   if (input.pass) {
     let convertedVal = convertFunc(input.num, input.unit).toFixed(5);
     let string = input.num + ` ` + input.unit + " to " + convertedVal + ` ` + input.to

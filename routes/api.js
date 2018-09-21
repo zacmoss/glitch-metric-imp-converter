@@ -25,12 +25,16 @@ module.exports = function (app) {
       var toString = convertHandler.getString(initNum, initUnit, returnNum, returnUnit);
       
       //res.json
+      if (initNum && initUnit && returnNum && returnUnit && toString) {
       res.json({initNum: initNum,
                 initUnit: initUnit,
                 returnNum: returnNum,
                 returnUnit: returnUnit,
                 string: toString
                });
+      } else {
+        res.json({error: 'invalid request'});
+      }
     });
     
 };
