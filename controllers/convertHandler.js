@@ -148,6 +148,8 @@ function ConvertHandler() {
   this.getString = function(initNum, initUnit, returnNum, returnUnit) {
     var result;
     // spellOutUnit will be in here to make string
+    let spelledOut = this.spellOutUnit(returnUnit);
+    result = initNum + ' ' + initUnit + ' converts to ' + returnNum + ' ' + spelledOut;
     
     return result;
   };
