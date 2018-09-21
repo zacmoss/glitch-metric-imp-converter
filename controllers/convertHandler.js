@@ -110,6 +110,7 @@ function ConvertHandler() {
     return result;
   };
   
+  // works
   this.convert = function(initNum, initUnit) {
     const galToL = 3.78541;
     const lToGal = 0.264172;
