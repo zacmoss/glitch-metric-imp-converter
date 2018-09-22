@@ -39,76 +39,20 @@ function ConvertHandler() {
     return result;
   };
   
-  // works if input is string
-  // [' ', 2, km]
-  //[' ', 2, /, 2, km]
-  //[' ', 2, ., 2, km]//
-  //[' ', 2, ., 2, /, 2, km]//
-  //[' ', 2, /, 2, ., 2, km]//
-  // [' ', 2, ., 2, /, 2, ., 2, km]//
-  //3/7.2/4kg
+  // works 
   this.getUnit = function(input) {
     var result;
-    var array = ['gal','l','mi','km','lbs','kg'];
-    var unit = input.slice(input.match(/[a-z]/i).index);
-    if (array.indexOf(unit.toLowerCase()) !== -1) {
-      result = unit;
-    } else {
-      result = 'invalid unit';
-    }
-    /*
     result = undefined;
-    let a = input.toLowerCase();
-    let array = ['mi', 'km', 'l', 'gal', 'lbs', 'kg'];
+    let myArray = input.split(/([0-9]+)/);
+    let spot = myArray.length - 1;
+    let unit = myArray[spot];
+    let unitLowerCase = unit.toLowerCase();
+    let array = ['gal','l','mi','km','lbs','kg'];
     array.forEach(function(ele) {
-      if (a.includes(ele)) {
-        let unit = ele;
-        let index = a.indexOf(unit);
-        let front = a.slice(0, index);
-        let back = a.slice(index + unit.length, a.length);
-        if (front.match(/[a-zA-Z]+/) || back.match(/[a-zA-Z]+/)) {
-          result = 'invalid unit';
-        } else {
-          result = unit
-        };
-      }
+      if (unitLowerCase === ele) result = unit;
     })
     if (result === undefined) result = 'invalid unit';
-    //console.log(result);
-    */
-    /* old doesn't work
-    // this is hugely incorrect, need to just get the letters and separate from nums
-    let unit;
-    let myArray = input.split(/([0-9]+)/);
-    if (myArray[0] === '') {
-      // number at [1]
-      if (myArray[2] === '.' && myArray[4] === '/' && myArray[6] === '.') {
-        //unit = myArray[8].toLowerCase();
-        unit = myArray[8];
-      } else if (myArray[2] === '/' && myArray[4] === '.') {
-        unit = myArray[6];
-      } else if (myArray[2] === '.' && myArray[4] === '/') {
-        unit = myArray[6];
-      } else if (myArray[2] === '.') {
-        unit = myArray[4];
-      } else if (myArray[2] === '/') {
-        unit = myArray[4];
-      } else {
-        unit = myArray[2];
-      }
-    } else {
-      // is not number
-      // check for appropriate unit
-      unit = myArray[0];
-    }
     
-    let check = unit.toLowerCase();
-    if (check === 'mi' || check === 'km' || check === 'lbs' || check === 'kg' || check === 'gal' || check === 'l') {
-        result = unit;
-    } else {
-      result = 'invalid unit';
-    }
-    */
     return result;
   };
   
