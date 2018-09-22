@@ -47,9 +47,28 @@ function ConvertHandler() {
   //[' ', 2, /, 2, ., 2, km]//
   // [' ', 2, ., 2, /, 2, ., 2, km]//
   //3/7.2/4kg
-  // this is hugely incorrect, need to just get the letters and separate from nums
   this.getUnit = function(input) {
     var result;
+    result = undefined;
+    let a = input.toLowerCase();
+    let array = ['mi', 'km', 'l', 'gal', 'lbs', 'kg'];
+    array.forEach(function(ele) {
+      if (a.includes(ele)) {
+        let unit = ele;
+        let index = a.indexOf(unit);
+        let front = a.slice(0, index);
+        let back = a.slice(index + unit.length, a.length);
+        if (front.match(/[a-zA-Z]+/) || back.match(/[a-zA-Z]+/)) {
+          result = 'invalid unit';
+        } else {
+          result = unit
+        };
+      }
+    })
+    if (result === undefined) result = 'invalid unit';
+    //console.log(result);
+    /* old doesn't work
+    // this is hugely incorrect, need to just get the letters and separate from nums
     let unit;
     let myArray = input.split(/([0-9]+)/);
     if (myArray[0] === '') {
@@ -80,6 +99,7 @@ function ConvertHandler() {
     } else {
       result = 'invalid unit';
     }
+    */
     return result;
   };
   
