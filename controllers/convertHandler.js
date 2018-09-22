@@ -49,6 +49,14 @@ function ConvertHandler() {
   //3/7.2/4kg
   this.getUnit = function(input) {
     var result;
+    var array = ['gal','l','mi','km','lbs','kg'];
+    var unit = input.slice(input.match(/[a-z]/i).index);
+    if (array.indexOf(unit.toLowerCase()) !== -1) {
+      result = unit;
+    } else {
+      result = 'invalid unit';
+    }
+    /*
     result = undefined;
     let a = input.toLowerCase();
     let array = ['mi', 'km', 'l', 'gal', 'lbs', 'kg'];
@@ -67,6 +75,7 @@ function ConvertHandler() {
     })
     if (result === undefined) result = 'invalid unit';
     //console.log(result);
+    */
     /* old doesn't work
     // this is hugely incorrect, need to just get the letters and separate from nums
     let unit;
